@@ -22,10 +22,12 @@
 #include "Game.h"
 #include <chrono>
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd )
+	wnd(wnd),
+	gfx(wnd),
+	cell(Cell(Vei2(1, 3), 5, Colors::Green)),
+	board(Board(gfx.ScreenWidth,gfx.ScreenHeight,10))
 {
 }
 
@@ -43,16 +45,6 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	using std::chrono::steady_clock;
-	steady_clock::time_point start = steady_clock::now();
-
-	for (int y = 0; y < Graphics::ScreenHeight; y++) {
-		for (int x = 0; x < Graphics::ScreenWidth; x++) {
-			gfx.PutPixel(x, y, Colors::Green);
-		}
-	}
-	steady_clock::time_point end = steady_clock::now();
-
-	std::chrono::duration<float> runtime = end - start;
-	float durationSecond = runtime.count();
+	//cell.Draw(gfx);
+	board.Draw(gfx);
 }
