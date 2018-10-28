@@ -11,8 +11,9 @@ private:
 	int cellCount;
 public:
 	
-	Cell* cellArray;
+	Cell** cellArray;
 	void Draw(Graphics& gfx);
+	void MoveCells();
 	Board(int width, int height, int size);
 	~Board();
 };

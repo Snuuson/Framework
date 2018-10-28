@@ -25,6 +25,11 @@
 #include "Graphics.h"
 #include "Cell.h"
 #include "Board.h"
+#include "FrameTimer.h"
+#include "ChiliWin.h"
+#include <string>
+#include <sstream>
+#include <iostream>
 
 class Game
 {
@@ -44,6 +49,8 @@ private:
 	Graphics gfx;
 	Cell cell;
 	Board board;
+	FrameTimer ft;
+	float timer = 0;
 	/********************************/
 	/*  User Variables              */
 	/********************************/

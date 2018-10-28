@@ -26,8 +26,9 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
-	cell(Cell(Vei2(1, 3), 5, Colors::Green)),
-	board(Board(gfx.ScreenWidth,gfx.ScreenHeight,10))
+	cell(Cell(Vei2(1, 3), 10, Colors::Red)),
+	board(Board(gfx.ScreenWidth,gfx.ScreenHeight,10)),
+	ft(FrameTimer())
 {
 }
 
@@ -41,10 +42,25 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	timer += ft.Mark();
+	//std::wstringstream s;
+	//s << L"Timer is " << timer;
+	//std::wstring ws = s.str();
+	//LPCWSTR lpcwstr = ws.c_str();
+	//OutputDebugString(lpcwstr);
+	if (timer > 0.05) {
+		
+		timer = 0;
+		cell.Move(gfx.ScreenWidth,gfx.ScreenHeight);
+	}
+		
+		
+	
 }
 
 void Game::ComposeFrame()
 {
-	//cell.Draw(gfx);
+	
 	board.Draw(gfx);
+	cell.Draw(gfx);
 }
